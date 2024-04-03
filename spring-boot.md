@@ -58,3 +58,29 @@ Field injection is generally discouraged for several reasons:
 
 Overall, constructor or setter injection is considered a better practice in Spring Boot applications as it promotes encapsulation, testability, and explicit dependency management, while also helping to prevent circular dependencies and supporting immutability.
 
+## What is @Lazy in spring boot constructor injection ?
+
+In Spring Boot, the `@Lazy` annotation is used in conjunction with constructor injection to indicate that a dependency should be lazily initialized. Lazy initialization means that the dependency will be created only when it is first requested, rather than being eagerly created at the time the containing bean is instantiated.
+
+By default, Spring performs eager initialization, where all dependencies of a bean are created when the containing bean is created. However, in some cases, you may have dependencies that are not always needed or have a significant initialization cost. In such scenarios, you can use `@Lazy` to defer the creation of those dependencies until they are actually required.
+
+Here's an example of using `@Lazy` in constructor injection:
+
+```java
+@Service
+public class MyService {
+    private final MyRepository myRepository;
+
+    @Autowired
+    public MyService(@Lazy MyRepository myRepository) {
+        this.myRepository = myRepository;
+    }
+}
+```
+
+In the above example, the `MyRepository` dependency is marked with `@Lazy`. This means that the `MyRepository` bean will not be created when the `MyService` bean is instantiated. Instead, it will be created only when it is first accessed or requested by the `MyService` bean.
+
+Using `@Lazy` can help improve the performance of your application by avoiding the unnecessary creation of dependencies that may not be used during the entire lifecycle of the bean. It can be particularly useful when dealing with dependencies that have resource-intensive initialization processes or when you have circular dependencies that would otherwise cause issues with eager initialization.
+
+It's important to note that `@Lazy` is not limited to constructor injection and can also be used with other types of injection, such as setter injection or field injection.
+
