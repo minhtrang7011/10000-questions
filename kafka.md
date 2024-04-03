@@ -134,8 +134,6 @@ By providing different acknowledgment levels, Kafka allows producers to make an 
 
 10. `replication.factor`: This configuration is also used when creating a new topic. It defines the number of replicas that should be maintained for each partition. Replication provides fault-tolerance and data availability.
 
-Certainly! Here are some additional common Kafka configurations:
-
 11. `compression.type`: This configuration specifies the compression type for message payloads that are produced by the producer. Supported compression types include `none`, `gzip`, `snappy`, `lz4`, and `zstd`. Compression can help reduce network bandwidth and storage requirements.
 
 12. `fetch.min.bytes`: This configuration defines the minimum amount of data (in bytes) that the consumer requests from a broker in a single fetch request. If the broker has fewer bytes than this value, it waits until more data is available or the fetch.max.wait.ms time elapses.
