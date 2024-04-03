@@ -65,6 +65,47 @@ public class ThreadPoolExample {
 }
 ```
 
+## Java synchronized keyword
+
+In Java, the `synchronized` keyword is used to provide mutual exclusion and thread-safety in concurrent programming. It ensures that only one thread can access a synchronized block or method at a time, preventing multiple threads from interfering with shared resources simultaneously. The `synchronized` keyword can be applied to methods or blocks of code.
+
+1. Synchronized Methods:
+When a method is declared as `synchronized`, it becomes a synchronized method. Only one thread can execute a synchronized method on a particular instance of the class at a time. Other threads attempting to invoke the synchronized method will be blocked until the executing thread completes the method or releases the lock.
+
+Example:
+```java
+public synchronized void synchronizedMethod() {
+    // Synchronized method code
+}
+```
+
+2. Synchronized Blocks:
+Synchronized blocks allow finer-grained control over the section of code that needs to be synchronized. A synchronized block is enclosed within braces and requires a lock object as a parameter. The lock object can be any Java object, and it serves as the mutual exclusion mechanism.
+
+Example:
+```java
+public void someMethod() {
+    // Non-synchronized code
+
+    synchronized(lockObject) {
+        // Synchronized block code
+    }
+
+    // Non-synchronized code
+}
+```
+
+In the above example, only one thread can enter the synchronized block at a time if they share the same `lockObject`. Other threads that encounter the synchronized block will wait until the lock is released.
+
+Key points to note about the `synchronized` keyword:
+
+- Synchronization ensures that changes made by one thread are visible to other threads. It provides memory visibility and prevents race conditions.
+- Synchronized blocks or methods introduce some performance overhead due to acquiring and releasing locks, so they should be used judiciously.
+- It's important to ensure that all threads accessing shared resources use synchronization to avoid inconsistencies or data corruption.
+- Synchronization can be applied to both instance methods and static methods, allowing for synchronization at the object level or class level, respectively.
+
+While the `synchronized` keyword is a powerful tool for managing concurrent access to shared resources, Java also provides other synchronization mechanisms such as locks, semaphores, and condition variables, which may offer more flexibility in certain scenarios.
+
 In the above example, a fixed-size thread pool with 5 threads is created using `Executors.newFixedThreadPool(5)`. Tasks are submitted for execution using the `execute()` method of `ExecutorService`. Each task is represented by a `Runnable` object. Finally, the `shutdown()` method is called on the executor to gracefully shut it down after executing all submitted tasks.
 
 Using the thread pool classes and interfaces from the `java.util.concurrent` package simplifies the management of threads and improves the efficiency of concurrent programming in Java.
