@@ -101,3 +101,32 @@ Several factors can impact how many requests a Spring Boot application can handl
 
 It's important to consider these factors and perform load testing under realistic conditions to determine the optimal configuration and capacity of your Spring Boot application. Monitoring the application's performance and resource utilization during load testing can help identify bottlenecks and optimize the application's concurrency capabilities.
 
+## Bean life cycle in spring boot 
+
+In Spring Boot, beans can go through several phases or stages during their lifecycle. The bean lifecycle is managed by the Spring container and involves the following stages:
+
+1. Instantiation: At this stage, the Spring container creates an instance of a bean based on its configuration. This is typically done through constructors or factory methods.
+
+2. Dependency Injection: Once the bean is instantiated, the container injects any dependencies that the bean requires. This is typically done through constructor injection, setter injection, or method injection.
+
+3. Initialization: After the dependencies are injected, the bean's `@PostConstruct` annotated method (if present) is invoked. This method allows you to perform any initialization logic or setup tasks for the bean.
+
+4. Usage: The bean is now in a usable state, and it can be used by other beans or components within the application.
+
+5. Destruction: When the application is shutting down, the Spring container calls the bean's `@PreDestroy` annotated method (if present) to allow for any cleanup or release of resources.
+
+It's important to note that the lifecycle of a bean can be different depending on its scope. Spring Boot supports different bean scopes, including:
+
+- Singleton: The default scope in Spring Boot. A single instance of the bean is created and shared throughout the application.
+
+- Prototype: A new instance of the bean is created each time it is requested.
+
+- Request: A new instance of the bean is created for each HTTP request (only applicable in a web application).
+
+- Session: A new instance of the bean is created for each user session (only applicable in a web application).
+
+- Custom Scopes: Spring Boot also allows you to define custom scopes for beans according to your specific requirements.
+
+The lifecycle stages described above apply to beans regardless of their scope, but the lifespan and behavior of a bean can vary based on its scope.
+
+By understanding the bean lifecycle and its associated scopes, you can effectively manage the creation, initialization, and destruction of beans in your Spring Boot application.
