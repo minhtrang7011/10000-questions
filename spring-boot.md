@@ -41,3 +41,20 @@ public class MyService {
 ```
 
 It's worth mentioning that starting from Spring Framework 4.3, constructor injection is recommended as the default choice for dependency injection. It promotes immutability and helps ensure that the required dependencies are always provided. Therefore, it's generally recommended to use constructor injection whenever possible in Spring Boot applications.
+
+## Why should we not field injection ?
+
+Field injection is generally discouraged for several reasons:
+
+1. Encapsulation and Readability: Field injection violates the principle of encapsulation, as it directly exposes dependencies as public fields. This can make it harder to reason about the class's behavior and can lead to unwanted direct access to dependencies from other classes. Using encapsulation through constructor or setter injection provides better encapsulation and promotes better code readability.
+
+2. Testability: Field injection makes it difficult to write unit tests for the class because the dependencies are directly injected into the fields. In order to mock or substitute dependencies during testing, you would need to use reflection or other techniques to modify the private fields. With constructor or setter injection, you can easily provide mock dependencies for testing purposes.
+
+3. Dependency Hiding: With field injection, the dependencies are hidden within the class, and it's not immediately clear what dependencies are required by the class. This can make it harder for developers to understand the class's dependencies and can lead to confusion or errors when working with the codebase. Constructor or setter injection makes the dependencies explicit and easier to understand.
+
+4. Circular Dependencies: Field injection can lead to circular dependencies, where two or more classes depend on each other directly or indirectly through their fields. Circular dependencies can create runtime errors and make it harder to reason about the flow of your application. Constructor injection helps to avoid circular dependencies by forcing you to explicitly define the dependencies and their order of instantiation.
+
+5. Immutability: Field injection does not support immutability, as the dependencies are directly assigned to the fields. Immutability is a desirable characteristic in software design as it promotes thread safety and helps prevent unintended side effects. Constructor injection, on the other hand, allows you to create immutable objects by initializing the dependencies in the constructor and making them final.
+
+Overall, constructor or setter injection is considered a better practice in Spring Boot applications as it promotes encapsulation, testability, and explicit dependency management, while also helping to prevent circular dependencies and supporting immutability.
+
