@@ -84,3 +84,20 @@ Using `@Lazy` can help improve the performance of your application by avoiding t
 
 It's important to note that `@Lazy` is not limited to constructor injection and can also be used with other types of injection, such as setter injection or field injection.
 
+## Which factor impact to how many request spring booot can handle at once time ?
+Several factors can impact how many requests a Spring Boot application can handle simultaneously. Here are some key factors to consider:
+
+1. Thread pool configuration: The thread pool configuration of the underlying servlet container, such as Tomcat, Jetty, or Undertow, plays a significant role. The thread pool determines the number of threads available to handle incoming requests. By adjusting the thread pool size, you can control the concurrency level of your application. Configuring an appropriate thread pool size based on your application's workload and available system resources is crucial.
+
+2. Hardware resources: The available hardware resources, including CPU, memory, and network bandwidth, influence the application's capacity to handle concurrent requests. A server with a higher number of CPU cores and sufficient memory can handle more concurrent requests efficiently. It's important to monitor resource utilization during load testing to ensure that the application is not overwhelmed by resource constraints.
+
+3. Application design and architecture: The design and architecture of your Spring Boot application can impact its concurrency capabilities. An application that is well-optimized, follows best practices, and utilizes asynchronous and non-blocking programming models can handle more concurrent requests with fewer threads. Leveraging reactive programming with libraries like Spring WebFlux or implementing asynchronous processing can improve the scalability and responsiveness of your application.
+
+4. Blocking operations: The presence of blocking operations within your application can limit its concurrency capabilities. If your application performs blocking operations such as synchronous I/O or long-running computations, it can tie up threads and reduce the number of requests that can be processed concurrently. It's important to identify blocking operations and consider alternatives like asynchronous I/O or offloading blocking tasks to separate threads or thread pools.
+
+5. Network latency and external dependencies: The response time of external services or dependencies that your application interacts with can impact its concurrency. If your application heavily relies on external services with high latency, it may increase the time spent waiting for responses, which can affect the number of concurrent requests that can be handled.
+
+6. Workload characteristics: The nature of the workload your application experiences, including the rate of incoming requests and their processing time, affects its concurrency. A high rate of incoming requests or requests with long processing times can put more strain on the application, potentially reducing the number of concurrent requests it can handle effectively.
+
+It's important to consider these factors and perform load testing under realistic conditions to determine the optimal configuration and capacity of your Spring Boot application. Monitoring the application's performance and resource utilization during load testing can help identify bottlenecks and optimize the application's concurrency capabilities.
+
