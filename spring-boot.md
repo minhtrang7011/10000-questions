@@ -1,4 +1,4 @@
-### In spring boot how many ways we can use IOC ?
+## In spring boot how many ways we can use IOC ?
 
 In Spring Boot, there are mainly three ways to utilize Inversion of Control (IOC) and dependency injection:
 
