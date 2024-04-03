@@ -112,3 +112,46 @@ It's important to note that acknowledgments from brokers confirm the successful 
 
 By providing different acknowledgment levels, Kafka allows producers to make an informed decision about trading off write throughput with durability and replication guarantees, enabling flexible and reliable message handling in distributed systems.
 
+## Common Kafka config
+
+1. `bootstrap.servers`: This configuration specifies the list of bootstrap servers that the Kafka client connects to initially to discover the full set of brokers in the Kafka cluster. It should be set to a comma-separated list of `<host>:<port>` pairs.
+
+2. `group.id`: This configuration is used to specify the consumer group ID. Consumers that belong to the same group share the workload of consuming partitions from topics. Kafka uses group IDs to track the offset commit position for each consumer group.
+
+3. `acks`: This configuration is specific to the producer and determines the number of acknowledgments the producer requires from brokers for successful message writes. The possible values are `0` (no acknowledgment), `1` (acknowledgment from the leader), and `all` (acknowledgment from all in-sync replicas).
+
+4. `auto.offset.reset`: This configuration is used by consumers when they start consuming a topic or partition that doesn't have a committed offset or when the committed offset is no longer valid. It specifies the strategy for resetting the offset. Possible values include `earliest` (start from the earliest available offset) and `latest` (start from the latest offset).
+
+5. `enable.auto.commit`: This configuration determines whether the consumer commits offsets automatically. If set to `true`, the consumer periodically commits the offsets it has processed. If set to `false`, the consumer requires manual offset management.
+
+6. `max.poll.records`: This configuration controls the maximum number of records that a consumer can fetch in a single poll request to the broker. It helps control the batch size of records returned to the consumer.
+
+7. `max.partition.fetch.bytes`: This configuration specifies the maximum amount of data (in bytes) the consumer can fetch from a single partition in a single request. It affects the maximum size of the records returned to the consumer.
+
+8. `message.max.bytes`: This configuration sets the maximum size of a Kafka message (including key and value) that the broker will accept for writing to a topic. It helps prevent oversized messages from being produced.
+
+9. `num.partitions`: This configuration is used when creating a new topic. It specifies the number of partitions for the topic. Increasing the number of partitions allows for parallelism in message processing.
+
+10. `replication.factor`: This configuration is also used when creating a new topic. It defines the number of replicas that should be maintained for each partition. Replication provides fault-tolerance and data availability.
+
+Certainly! Here are some additional common Kafka configurations:
+
+11. `compression.type`: This configuration specifies the compression type for message payloads that are produced by the producer. Supported compression types include `none`, `gzip`, `snappy`, `lz4`, and `zstd`. Compression can help reduce network bandwidth and storage requirements.
+
+12. `fetch.min.bytes`: This configuration defines the minimum amount of data (in bytes) that the consumer requests from a broker in a single fetch request. If the broker has fewer bytes than this value, it waits until more data is available or the fetch.max.wait.ms time elapses.
+
+13. `fetch.max.bytes`: This configuration sets the maximum amount of data (in bytes) that the consumer can fetch from a broker in a single fetch request. It limits the size of the response returned to the consumer.
+
+14. `fetch.max.wait.ms`: This configuration specifies the maximum amount of time the consumer waits for new data to arrive in a fetch request. If no new data is available within this time, the broker returns a response to the consumer with whatever data it has.
+
+15. `linger.ms`: This configuration controls the amount of time the producer waits before sending a batch of messages. It allows the producer to accumulate more messages in a single batch, improving throughput and reducing the overhead of sending frequent smaller batches.
+
+16. `max.in.flight.requests.per.connection`: This configuration determines the maximum number of unacknowledged requests that can be in-flight to a broker. It helps control the degree of parallelism for the producer.
+
+17. `max.poll.interval.ms`: This configuration sets the maximum time (in milliseconds) that the consumer can be idle during a poll before it is considered inactive and its partitions are reassigned to another consumer in the same group.
+
+18. `metadata.max.age.ms`: This configuration specifies the maximum time (in milliseconds) that the client will cache metadata about the Kafka cluster. After this time elapses, the client will refresh the metadata for topics and partitions.
+
+19. `request.timeout.ms`: This configuration sets the maximum time (in milliseconds) that a client will wait for a response from the Kafka broker for various requests, such as produce, fetch, or metadata requests.
+
+20. `socket.receive.buffer.bytes` and `socket.send.buffer.bytes`: These configurations control the size of the TCP socket receive and send buffers, respectively. Adjusting these values can help optimize network I/O performance.
