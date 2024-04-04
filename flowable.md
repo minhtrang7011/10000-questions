@@ -1,4 +1,4 @@
-## What if task complete beforre timer boundery event fired ?
+## What if task complete before timer boundery event fired ?
 
 **Scenario 1: Timer Interrupt Event Set to False (Default):**
 
