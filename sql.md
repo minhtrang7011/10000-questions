@@ -16,8 +16,7 @@ In the context of databases, clustered and non-clustered indexes are two differe
 - In a non-clustered index, the leaf nodes of the index's B-tree structure contain pointers to the actual data rows rather than the data rows themselves.
 - A table can have multiple non-clustered indexes, allowing for different access paths to the data.
 - When you create a non-clustered index on a table, it does not change the physical order of the data in the table; instead, it creates a separate structure that allows for efficient access to the data based on the indexed columns.
-- Non-clustered indexes are useful for queries that frequently filter, sort, or group data based on columns other than those in the clustered index, as well as for covering queries (queries that can be satisfied
-- entirely from the index without accessing the actual data rows).
+- Non-clustered indexes are useful for queries that frequently filter, sort, or group data based on columns other than those in the clustered index, as well as for covering queries (queries that can be satisfied entirely from the index without accessing the actual data rows).
 
 In summary, a clustered index physically orders the data rows in the table based on the index key, while a non-clustered index provides an additional structure for efficient access to the data rows without 
 changing their physical order. Each type of index has its own advantages and use cases, and the choice between them depends on the specific requirements and characteristics of the database and the queries it needs to support.
