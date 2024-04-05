@@ -59,4 +59,25 @@ CREATE INDEX IX_DepartmentID ON Employees (DepartmentID);
 
 In this case, the data in the `Employees` table remains physically sorted by the `EmployeeID`, as the non-clustered index does not affect the physical order of the data. However, the database engine creates a separate index structure that contains pointers to the data rows based on the `DepartmentID`. This index allows for efficient access to the data rows when querying based on `DepartmentID`, even though the physical order of the rows in the table remains unchanged.
 
-In summary, the clustered index physically sorts the data rows in the table based on the index key, while the non-clustered index provides an additional structure for efficient access to the data rows without changing their physical order.****
+In summary, the clustered index physically sorts the data rows in the table based on the index key, while the non-clustered index provides an additional structure for efficient access to the data rows without changing their physical order.
+
+## SQL order of execution
+The execution of a query in SQL follows a logical order of operations, which can be summarized in the following sequence:
+
+1. **FROM clause**: The DBMS identifies the tables involved in the query from the FROM clause. This is the first step in determining which data to retrieve.
+
+2. **JOINs**: If the query involves multiple tables joined together, the DBMS performs the join operation based on the specified join conditions. This step combines data from different tables based on the join criteria.
+
+3. **WHERE clause**: After the necessary data is retrieved from the joined tables, the DBMS applies any filtering criteria specified in the WHERE clause. Rows that do not meet the specified conditions are excluded from further processing.
+
+4. **GROUP BY clause**: If the query includes a GROUP BY clause, the DBMS groups the rows with identical values in the specified columns together.
+
+5. **HAVING clause**: If the query includes a HAVING clause (which is similar to the WHERE clause but applies to grouped data), the DBMS applies any filtering criteria specified in the HAVING clause to the grouped data.
+
+6. **SELECT clause**: The DBMS selects the columns specified in the SELECT clause and computes any expressions or calculations included in the query. This step determines the final output of the query.
+
+7. **ORDER BY clause**: If the query includes an ORDER BY clause, the DBMS sorts the resulting rows based on the specified column(s) and sort order.
+
+8. **LIMIT/OFFSET (if applicable)**: If the query includes a LIMIT clause (or similar construct depending on the DBMS), the DBMS limits the number of rows returned by the query. If an OFFSET is specified, the DBMS skips the specified number of rows before returning results.
+
+It's important to note that not all queries include all of these clauses, and the actual execution plan may vary depending on the specifics of the query and the optimization strategies employed by the DBMS. However, this sequence provides a general overview of the typical order of operations in SQL query execution.
