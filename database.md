@@ -26,7 +26,7 @@ Maintaining data integrity is essential for ensuring the effectiveness and relia
 
 Overall, data integrity is essential for maintaining the quality, reliability, and trustworthiness of data in databases and information systems. It is a fundamental aspect of data management and plays a critical role in supporting business operations, decision-making, and regulatory compliance.
 
-## ACID rule
+## ACID properties
 
 ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that ensures the reliability and integrity of transactions in database systems. These properties are fundamental for maintaining data integrity and ensuring that database transactions are processed reliably, even in the presence of failures.
 
