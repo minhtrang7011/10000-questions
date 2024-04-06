@@ -26,6 +26,26 @@ Maintaining data integrity is essential for ensuring the effectiveness and relia
 
 Overall, data integrity is essential for maintaining the quality, reliability, and trustworthiness of data in databases and information systems. It is a fundamental aspect of data management and plays a critical role in supporting business operations, decision-making, and regulatory compliance.
 
+## ACID rule
+
+ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that ensures the reliability and integrity of transactions in database systems. These properties are fundamental for maintaining data integrity and ensuring that database transactions are processed reliably, even in the presence of failures.
+
+Let's break down each component of ACID:
+
+1. **Atomicity**:
+   - Atomicity ensures that a transaction is treated as a single, indivisible unit of work. Either all of the operations within the transaction are successfully completed and the changes are committed to the database, or none of the operations are performed and the database remains unchanged. There is no partial execution of transactions. If any part of the transaction fails, the entire transaction is rolled back to its initial state.
+
+2. **Consistency**:
+   - Consistency ensures that the database remains in a consistent state before and after the transaction. It guarantees that the integrity constraints, data validation rules, and relationships defined in the database schema are preserved during transaction execution. In other words, the database transitions from one consistent state to another consistent state after each successful transaction.
+
+3. **Isolation**:
+   - Isolation ensures that the concurrent execution of multiple transactions does not interfere with each other. Each transaction is isolated from other transactions until it is completed and committed. Transactions should appear to execute serially, even if they are executed concurrently. Isolation prevents issues such as dirty reads, non-repeatable reads, and phantom reads.
+
+4. **Durability**:
+   - Durability guarantees that once a transaction is committed, its changes are permanently saved and will not be lost, even in the event of a system failure or crash. The committed changes are stored in non-volatile storage (such as disk) and remain intact even if the system crashes or power is lost. Durability ensures that the database can recover to a consistent state after a failure without losing committed data.
+
+ACID properties are essential for ensuring the reliability, consistency, and integrity of database transactions. They provide a framework for designing and implementing robust database systems that can maintain data integrity and withstand various types of failures and concurrency issues. Transaction processing systems in relational databases typically adhere to the ACID properties to ensure data reliability and consistency.
+
 ## Normalization and  Denormalization
 
 Normalization and denormalization are two techniques used in database design to optimize the structure and performance of a database.
