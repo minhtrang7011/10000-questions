@@ -1,3 +1,31 @@
+## What is "Data integrity"
+
+Data integrity refers to the accuracy, consistency, and reliability of data stored in a database or information system. It ensures that data remains unchanged and reliable throughout its lifecycle, from creation to deletion. Data integrity is crucial for ensuring the quality and trustworthiness of data and is maintained through various mechanisms, including constraints, validations, and error detection and correction techniques.
+
+Here are some key aspects of data integrity:
+
+1. **Accuracy**: Data accuracy ensures that the data reflects the real-world entities or events it represents. It involves ensuring that data values are correct and free from errors or inconsistencies.
+
+2. **Completeness**: Data completeness ensures that all required data is present and no essential information is missing. It involves ensuring that all necessary fields are populated with valid data.
+
+3. **Consistency**: Data consistency ensures that data remains uniform and coherent across the database. It involves maintaining data relationships and dependencies, such as referential integrity between related tables.
+
+4. **Validity**: Data validity ensures that data conforms to predefined rules or constraints. It involves enforcing data validation rules, such as data type constraints, range constraints, and format constraints.
+
+5. **Reliability**: Data reliability ensures that data can be trusted and relied upon for decision-making and other purposes. It involves preventing data corruption, unauthorized access, and other threats to data integrity.
+
+Maintaining data integrity is essential for ensuring the effectiveness and reliability of database systems. It is achieved through the implementation of various measures, including:
+
+- **Constraints**: Such as primary key constraints, foreign key constraints, unique constraints, and check constraints, which enforce data integrity rules at the database level.
+  
+- **Transactions**: Using transactions to ensure the atomicity, consistency, isolation, and durability (ACID properties) of database operations, thereby preventing data corruption and ensuring data integrity.
+  
+- **Data validation**: Performing data validation checks at the application level to ensure that only valid data is entered into the database.
+  
+- **Backup and recovery**: Implementing backup and recovery mechanisms to protect against data loss or corruption and to restore data to a consistent state in case of failures or disasters.
+
+Overall, data integrity is essential for maintaining the quality, reliability, and trustworthiness of data in databases and information systems. It is a fundamental aspect of data management and plays a critical role in supporting business operations, decision-making, and regulatory compliance.
+
 ## Normalization and  Denormalization
 
 Normalization and denormalization are two techniques used in database design to optimize the structure and performance of a database.
