@@ -46,6 +46,23 @@ Let's break down each component of ACID:
 
 ACID properties are essential for ensuring the reliability, consistency, and integrity of database transactions. They provide a framework for designing and implementing robust database systems that can maintain data integrity and withstand various types of failures and concurrency issues. Transaction processing systems in relational databases typically adhere to the ACID properties to ensure data reliability and consistency.
 
+## Dirty reads, non-repeatable reads, and phantom reads
+
+Dirty reads, non-repeatable reads, and phantom reads are phenomena that can occur in a database system when multiple transactions are executed concurrently, and the isolation level of the transactions allows certain types of inconsistencies between them. These phenomena are related to the Isolation property of the ACID (Atomicity, Consistency, Isolation, Durability) properties.
+
+1. **Dirty Reads**:
+   - A dirty read occurs when one transaction reads data that has been modified by another transaction but has not yet been committed. In other words, a transaction reads data that may be rolled back later by the modifying transaction. Dirty reads can lead to inconsistencies if the modifying transaction is eventually rolled back. 
+
+2. **Non-Repeatable Reads**:
+   - A non-repeatable read occurs when a transaction reads the same data multiple times during its execution, but the data changes between each read due to the committed changes made by other transactions. This inconsistency results in different values being read for the same data within the same transaction. Non-repeatable reads can occur when transactions read data without acquiring proper locks or when using lower isolation levels that allow this phenomenon.
+
+3. **Phantom Reads**:
+   - A phantom read occurs when a transaction executes a query multiple times within its scope, and the result set changes between the executions due to the committed insert or delete operations performed by other transactions. This inconsistency results in different sets of rows being returned for the same query within the same transaction. Phantom reads can occur when transactions are allowed to see changes to the result set of a query made by other transactions that have committed their changes.
+
+These phenomena are typically associated with lower isolation levels in database systems, such as READ UNCOMMITTED or READ COMMITTED. Higher isolation levels, such as REPEATABLE READ or SERIALIZABLE, aim to prevent or minimize these inconsistencies by providing stronger guarantees about the visibility and consistency of data during transaction execution.
+
+It's important for database designers and developers to understand these phenomena and choose appropriate isolation levels based on the requirements of their applications to balance data consistency and performance.
+
 ## Normalization and  Denormalization
 
 Normalization and denormalization are two techniques used in database design to optimize the structure and performance of a database.
