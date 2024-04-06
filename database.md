@@ -92,3 +92,30 @@ Denormalization is typically done in cases where:
 By denormalizing the database, queries can often be simplified, resulting in faster response times. However, denormalization may lead to data redundancy, which can potentially introduce anomalies during data modification operations (insert, update, delete). Therefore, careful consideration is required when denormalizing a database to ensure that data integrity is not compromised.
 
 In summary, normalization and denormalization are two complementary techniques used in database design to achieve different goals: normalization to reduce redundancy and maintain data integrity, and denormalization to improve query performance at the expense of redundancy. The choice between the two depends on the specific requirements and constraints of the application.
+
+To understand the concept of transitive dependency, let's consider the following example:
+
+Suppose we have a table called `Employee_Details` with the following attributes:
+
+- EmployeeID (Primary Key)
+- EmployeeName
+- DepartmentID
+- DepartmentName
+- Location
+
+In this example, let's assume that `EmployeeID` is the primary key.
+
+1. **First Normal Form (1NF)**:
+   - Ensures atomicity, meaning each column contains only single, indivisible values.
+   - For example, `DepartmentName` and `Location` should not contain multiple values separated by commas. If a department operates in multiple locations, each combination of department and location should be represented in a separate row.
+
+2. **Second Normal Form (2NF)**:
+   - Ensures that non-key attributes are fully functionally dependent on the entire primary key.
+   - In our example, if the primary key is `(EmployeeID, DepartmentID)`, then `DepartmentName` and `Location` should be dependent on both `EmployeeID` and `DepartmentID`.
+
+3. **Third Normal Form (3NF)**:
+   - Ensures that non-key attributes are not transitively dependent on the primary key.
+   - In our example, let's assume that `DepartmentName` is functionally dependent only on `DepartmentID`, and `Location` is functionally dependent only on `DepartmentName`. This creates a transitive dependency: `Location` depends on `DepartmentName`, and `DepartmentName` depends on `DepartmentID`, which in turn depends on the primary key (`EmployeeID`).
+   - To achieve 3NF, we should remove the transitive dependency. One way to do this is to create a separate table for departments, where `DepartmentID` is the primary key and `DepartmentName` and `Location` are stored. Then, in the `Employee_Details` table, we would only need to include `DepartmentID` as a foreign key, ensuring that non-key attributes are directly dependent on the primary key (`EmployeeID`).
+
+By resolving transitive dependencies and ensuring that non-key attributes are directly dependent on the primary key, we can achieve a normalized database schema that minimizes redundancy and improves data integrity. This makes it easier to maintain and query the database while reducing the risk of anomalies during data manipulation.
