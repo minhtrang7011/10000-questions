@@ -109,3 +109,32 @@ While the `synchronized` keyword is a powerful tool for managing concurrent acce
 In the above example, a fixed-size thread pool with 5 threads is created using `Executors.newFixedThreadPool(5)`. Tasks are submitted for execution using the `execute()` method of `ExecutorService`. Each task is represented by a `Runnable` object. Finally, the `shutdown()` method is called on the executor to gracefully shut it down after executing all submitted tasks.
 
 Using the thread pool classes and interfaces from the `java.util.concurrent` package simplifies the management of threads and improves the efficiency of concurrent programming in Java.
+
+## What is string constant pool in java
+
+In Java, the "String constant pool" is a special area of memory where Java keeps unique string literals. When you create a string using double quotes (`" "`), Java first checks if that string already exists in the string constant pool. If it does, Java returns a reference to the existing string; otherwise, it creates a new string object in the pool and returns a reference to it.
+
+Here's an example:
+
+```java
+String s1 = "hello";
+String s2 = "hello";
+String s3 = new String("hello");
+
+System.out.println(s1 == s2);  // true, because both s1 and s2 refer to the same string in the constant pool
+System.out.println(s1 == s3);  // false, because s3 is a new string object created with the `new` keyword
+```
+
+In this example, `s1` and `s2` both refer to the same string object `"hello"` in the string constant pool because Java detects that `"hello"` is already present in the pool and reuses it. However, `s3` is created with the `new` keyword, so it's a separate object, even though its content is the same as `"hello"`. Therefore, `s1 == s3` returns `false`.
+
+The use of the string constant pool helps conserve memory and improves performance by avoiding unnecessary duplication of string objects.
+
+## Where string constant pool store ?
+
+The string constant pool is part of the Java Runtime Environment's (JRE) method area, which is a part of the Java heap memory. 
+
+In the Java memory model, the method area is a shared, read-only memory space that stores class structures, method and field information, static variables, constant pool, and other metadata required by the JVM. The string constant pool is one of the components within the method area.
+
+When a Java program is executed, the JVM loads classes into the method area and initializes their metadata, including the constant pool for each class. The string constant pool is where unique string literals are stored, and it is shared across all instances of a class.
+
+By storing string literals in the string constant pool, Java optimizes memory usage by avoiding unnecessary duplication of identical string objects. This approach also improves performance by facilitating faster string comparison and reducing the overhead of string creation.
