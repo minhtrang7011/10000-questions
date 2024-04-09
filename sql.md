@@ -81,3 +81,29 @@ The execution of a query in SQL follows a logical order of operations, which can
 8. **LIMIT/OFFSET (if applicable)**: If the query includes a LIMIT clause (or similar construct depending on the DBMS), the DBMS limits the number of rows returned by the query. If an OFFSET is specified, the DBMS skips the specified number of rows before returning results.
 
 It's important to note that not all queries include all of these clauses, and the actual execution plan may vary depending on the specifics of the query and the optimization strategies employed by the DBMS. However, this sequence provides a general overview of the typical order of operations in SQL query execution.
+
+## Sql Function vs Store Procedure
+
+SQL functions and stored procedures are both database objects used to encapsulate logic and perform operations within a database system. However, they serve different purposes and have different characteristics. Here's a comparison between SQL functions and stored procedures:
+
+1. **Purpose**:
+   - **SQL Function**: A function in SQL is designed to perform a specific task and return a single value. It can accept input parameters and produce an output value. Functions are primarily used for calculations and data manipulation within SQL queries.
+   - **Stored Procedure**: A stored procedure is a group of SQL statements that can perform a series of operations. Unlike functions, stored procedures can contain multiple SQL statements, including data manipulation, control flow logic, and transaction management. Stored procedures can also return result sets, but they are not restricted to returning a single value.
+
+2. **Return Type**:
+   - **SQL Function**: Functions must return a single value of a specified data type. They are often used in expressions or as part of SQL statements where a single value is required.
+   - **Stored Procedure**: Stored procedures can return result sets, output parameters, or they may not return any value at all. They are more versatile in terms of the types of results they can produce.
+
+3. **Usage**:
+   - **SQL Function**: Functions are typically used within SQL statements, such as in SELECT, WHERE, or ORDER BY clauses, to perform calculations or data transformations.
+   - **Stored Procedure**: Stored procedures are often used to encapsulate complex business logic or database operations. They can be called from client applications or other stored procedures and can perform a variety of tasks, including data manipulation, validation, and transaction management.
+
+4. **Transaction Control**:
+   - **SQL Function**: Functions cannot contain transaction control statements like COMMIT or ROLLBACK since they are not allowed to modify database state.
+   - **Stored Procedure**: Stored procedures can include transaction control statements to manage database transactions, making them suitable for tasks that involve multiple database operations that need to be performed atomically.
+
+5. **Portability**:
+   - **SQL Function**: Functions are generally more portable across different database systems since they adhere to SQL standards. However, there may still be variations in syntax and behavior between different database systems.
+   - **Stored Procedure**: Stored procedures are less portable because they often contain database-specific syntax and features. Moving stored procedures between different database systems may require modifications to ensure compatibility.
+
+In summary, SQL functions are designed to return a single value and are primarily used for data manipulation within SQL statements, while stored procedures are more versatile and can perform a wider range of operations, including transaction management and complex business logic. The choice between using a function or a stored procedure depends on the specific requirements of the task at hand.
