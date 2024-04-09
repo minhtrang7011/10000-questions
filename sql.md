@@ -111,6 +111,8 @@ In summary, SQL functions are designed to return a single value and are primaril
 ## Postgres SQL function template 
 
 Template Code for creating SQL Function
+
+``` sql
 create or replace function func_name(fieldName datatype)
 returns <return_datatype>
 as
@@ -120,8 +122,9 @@ begin
 end;
 $$
 language plpgsql;
+```
 
-
+``` sql
 --parameter type{in*|out|inout|VARIADIC**}  *default **variable number of arguments
 create or replace function func_name({parameter type} fieldName datatype)
 as
@@ -131,8 +134,9 @@ begin
 end;
 $$
 language plpgsql;
+```
 
-
+``` sql
 if <condition> then
 	<statements>
 elsif <condition> then
@@ -140,8 +144,9 @@ elsif <condition> then
 else
 	<statements>
 end if;
+```
 
-
+``` sql
 create or replace function fn<table_event>(field datatype)
 returns table
 (
@@ -163,3 +168,4 @@ begin
 end;
 $$
 Language plpgsql;
+```
