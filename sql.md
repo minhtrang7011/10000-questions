@@ -107,3 +107,59 @@ SQL functions and stored procedures are both database objects used to encapsulat
    - **Stored Procedure**: Stored procedures are less portable because they often contain database-specific syntax and features. Moving stored procedures between different database systems may require modifications to ensure compatibility.
 
 In summary, SQL functions are designed to return a single value and are primarily used for data manipulation within SQL statements, while stored procedures are more versatile and can perform a wider range of operations, including transaction management and complex business logic. The choice between using a function or a stored procedure depends on the specific requirements of the task at hand.
+
+## Postgres SQL function template 
+
+Template Code for creating SQL Function
+create or replace function func_name(fieldName datatype)
+returns <return_datatype>
+as
+$$
+begin
+	<type in function body here>
+end;
+$$
+language plpgsql;
+
+
+--parameter type{in*|out|inout|VARIADIC**}  *default **variable number of arguments
+create or replace function func_name({parameter type} fieldName datatype)
+as
+$$
+begin
+	<type in function body here>
+end;
+$$
+language plpgsql;
+
+
+if <condition> then
+	<statements>
+elsif <condition> then
+	<statements>
+else
+	<statements>
+end if;
+
+
+create or replace function fn<table_event>(field datatype)
+returns table
+(
+	field_name1 integer, 
+	field_name2 character varying(60),
+	field_name3 varchar
+)
+as
+$$
+begin
+	-- table alias is mandatory, or use tablename as alias
+	RETURN QUERY
+	select 	alias.field1, 
+		alias.field2,
+		alias.field3
+	from table alias
+	where alias.field1 = inputParameter;
+	
+end;
+$$
+Language plpgsql;
