@@ -176,3 +176,50 @@ Separating the string constant pool from the general heap memory serves several 
 5. **Predictable Behavior**: By isolating string literals in a separate pool, developers can rely on consistent behavior regarding string manipulation and comparison. This separation helps in maintaining predictable program behavior, which is crucial for debugging and ensuring the correctness of the software.
 
 Overall, separating the string constant pool from the general heap memory helps in optimizing memory usage, improving performance, enhancing security, and ensuring predictable behavior in programs that heavily utilize string literals.
+
+## Questions about exception
+
+1. What is the difference between checked and unchecked exceptions?
+
+2. What happens behind the code int data=50/0;?
+
+3. Why use multiple catch block?
+
+4. Is there any possibility when the finally block is not executed?
+
+5. What is exception propagation?
+
+6. What is the difference between the throw and throws keyword?
+
+7. What are the 4 rules for using exception handling with method overriding?
+
+Let's break down your questions one by one:
+
+1. **Difference between checked and unchecked exceptions:**
+   - Checked exceptions are the exceptions that are checked at compile-time. These are exceptions that the compiler forces you to handle or declare using a `throws` clause. Examples include `IOException`, `SQLException`, etc.
+   - Unchecked exceptions, on the other hand, are not checked at compile-time. These usually occur at runtime and are subclasses of `RuntimeException`. Examples include `NullPointerException`, `ArrayIndexOutOfBoundsException`, etc.
+
+2. **What happens behind the code `int data = 50/0;`?**
+   - This line of code will throw an `ArithmeticException` at runtime because dividing by zero is not allowed in Java. When the code is executed, the JVM will encounter this division by zero operation and throw the exception.
+
+3. **Why use multiple catch blocks?**
+   - Multiple catch blocks are used to handle different types of exceptions separately. This allows you to provide specific error handling logic for each type of exception that might occur in your code.
+
+4. **Is there any possibility when the finally block is not executed?**
+   - Yes, there are a few scenarios where the finally block may not be executed:
+     - If the JVM exits while executing the try or catch block due to a call to `System.exit()`.
+     - If the thread executing the try or catch block is interrupted or killed.
+     - If there's an infinite loop or deadlock within the try or catch block that prevents the program from proceeding.
+
+5. **What is exception propagation?**
+   - Exception propagation is the mechanism by which an exception is passed from one method to another method in the call stack until it's caught or until the program terminates.
+
+6. **Difference between the throw and throws keyword:**
+   - `throw` keyword is used to explicitly throw an exception within a method or block of code.
+   - `throws` keyword is used in the method signature to declare that the method might throw certain types of exceptions. It doesn't actually throw the exception but specifies that the method may throw it, and the responsibility to handle it lies with the caller.
+
+7. **Four rules for using exception handling with method overriding:**
+   - The overridden method cannot throw checked exceptions that are new or broader than the ones declared by the overridden method.
+   - The overriding method can throw narrower or fewer exceptions than the overridden method.
+   - The overriding method can throw any unchecked exception, regardless of whether the overridden method declares the same exception or not.
+   - The overriding method must not throw any new or broader checked exceptions that are not subclasses of the exceptions thrown by the overridden method.
