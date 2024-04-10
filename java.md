@@ -1,3 +1,25 @@
+## JVM vs JRE vs JDK 
+
+JVM, JRE, and JDK are all related to Java programming, but they serve different purposes:
+
+1. **JVM (Java Virtual Machine):**
+   - JVM is an abstract computing machine that enables a computer to run Java programs.
+   - It provides a runtime environment in which Java bytecode can be executed.
+   - JVM interprets the bytecode into machine code or uses Just-In-Time (JIT) compilation to translate it into native machine code for the host platform.
+   - JVM provides features like automatic memory management (garbage collection), exception handling, and security.
+
+2. **JRE (Java Runtime Environment):**
+   - JRE is a package of software that includes JVM, libraries, and other components necessary for running Java applications.
+   - It provides the runtime environment for Java programs without development tools, such as compilers and debuggers.
+   - JRE allows end-users to run Java applications on their machines without needing to install the full JDK.
+
+3. **JDK (Java Development Kit):**
+   - JDK is a full-featured software development kit that includes everything needed to develop, debug, and deploy Java applications.
+   - It contains JRE, development tools (such as javac compiler, debugger, and other utilities), and libraries.
+   - JDK is used by developers to write and compile Java code, as well as to create Java applications, applets, and servlets.
+
+In summary, JDK is used by developers for Java development, including writing and compiling code, while JRE is used by end-users to run Java applications, and JVM is the runtime environment that executes Java bytecode.
+
 ## Thread life cycle in Java
 
 In Java, threads have a well-defined life cycle, which consists of several distinct states. The thread life cycle in Java includes the following states:
