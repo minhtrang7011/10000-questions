@@ -1,3 +1,15 @@
+## 4 oops concepts
+
+Object-oriented programming (OOP) revolves around four main principles, often referred to as the four pillars of OOP. These principles are:
+
+1. **Encapsulation**: This refers to the bundling of data (variables) and methods (functions) that operate on the data into a single unit or class. Encapsulation hides the internal state of an object and restricts access to it only through well-defined interfaces. It helps in achieving data abstraction and information hiding, which enhances security and maintainability of code.
+
+2. **Inheritance**: Inheritance allows a class (subclass or derived class) to inherit properties and behaviors (methods and attributes) from another class (superclass or base class). This promotes code reusability and establishes a hierarchy among classes, where subclasses can extend or specialize the functionality of their parent classes.
+
+3. **Polymorphism**: Polymorphism means the ability of objects to take on different forms or behave differently based on the context. There are two types of polymorphism: compile-time (method overloading) and runtime (method overriding). Method overloading involves defining multiple methods with the same name but different parameters within the same class, while method overriding involves redefining a method in a subclass with the same signature as a method in its superclass. Polymorphism allows for flexibility and abstraction in programming, enabling code to be written in a more generic and extensible manner.
+
+4. **Abstraction**: Abstraction involves the concept of modeling real-world entities as classes or objects in the software system. It focuses on representing only the relevant features of an object while hiding unnecessary details. Abstraction helps in managing complexity by providing a simplified view of objects and their interactions. It allows programmers to focus on what an object does rather than how it does it, which promotes code readability, maintainability, and scalability.
+
 ## What is SOLID principle
 
 The SOLID principles are a set of five design principles that help in creating software that is easy to understand, maintain, and extend. These principles were introduced by Robert C. Martin (also known as Uncle Bob) and are widely regarded as best practices in software development. Each principle focuses on a specific aspect of software design and promotes loose coupling, high cohesion, and flexibility. The SOLID principles are as follows:
